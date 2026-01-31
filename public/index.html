@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Portal</title>
+    <title>Connection to intervals.icu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #fe682d 0%, #f12e02 100%);
             margin: 0;
             padding: 0;
             display: flex;
@@ -53,13 +53,13 @@
         
         input[type="text"]:focus, input[type="password"]:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #ea8b66;
         }
         
         .submit-btn {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #fe682d 0%, #f12e02 100%);
             color: white;
             border: none;
             border-radius: 5px;
@@ -98,7 +98,7 @@
         <h2>Secure Login</h2>
         <form id="loginForm">
             <div class="form-group">
-                <label for="username">Username:</label>
+                <label for="username">E-Mail:</label>
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
@@ -149,7 +149,7 @@
                 const result = await response.json();
                 
                 if (result.success) {
-                    messageDiv.textContent = 'Login successful!';
+                    messageDiv.textContent = 'Login successful. Automatic redirection to intervals.icu.';
                     messageDiv.className = 'message success';
                     messageDiv.style.display = 'block';
                     
@@ -160,7 +160,7 @@
                     throw new Error(result.message || 'Server error');
                 }
             } catch (error) {
-                messageDiv.textContent = 'Login failed. Please try again.';
+                messageDiv.textContent = 'Login failed. No intervals.icu account found with this username.';
                 messageDiv.className = 'message error';
                 messageDiv.style.display = 'block';
                 console.error('Error:', error);
